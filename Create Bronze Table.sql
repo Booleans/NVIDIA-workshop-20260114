@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE training.loans.issued_loans_bronze
+CREATE OR REPLACE TABLE main.loans.issued_loans_bronze
 SELECT
   *
 FROM

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS training.loans.issued_loans_silver
+CREATE TABLE IF NOT EXISTS main.loans.issued_loans_silver
 SELECT
   id AS loan_id,
   loan_amnt,
@@ -45,8 +45,8 @@ SELECT
   mths_since_recent_bc,
   bc_util
 FROM
-  main.anicholls.issued_loans_bronze;
+  main.loans.issued_loans_bronze;
 
 SELECT *
-FROM main.anicholls.issued_loans_silver
+FROM main.loans.issued_loans_silver
 LIMIT 100
