@@ -1,5 +1,5 @@
 CREATE OR REFRESH STREAMING TABLE loans_bronze_DLT
---( CONSTRAINT valid_loan_grade EXPECT(grade IN ('A', 'B', 'C')) ON VIOLATION DROP ROW)
+--(CONSTRAINT valid_loan_grade EXPECT(grade IN ('A', 'B', 'C')) ON VIOLATION DROP ROW)
 AS SELECT
   *
 FROM
