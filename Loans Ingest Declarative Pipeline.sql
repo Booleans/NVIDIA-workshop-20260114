@@ -16,14 +16,22 @@ SELECT
   sub_grade,
   CASE
     WHEN substr(emp_length, 1, 1) = '<' THEN 0 -- <1 year should count as 0
-    ELSE regexp_extract(emp_length, '(\\d+)+')
+    ELSE try_cast(regexp_extract(emp_length, '(\\d+)+') AS INT)
   END AS emp_length,
   home_ownership,
   annual_inc,
   verification_status,
   to_date(issue_d, 'MMM-yy') as issue_date,
-  EXTRACT(YEAR FROM issue_date) as issue_year,
-  EXTRACT(MONTH FROM issue_date) as issue_month,
+  EXTRACT(
+    YEAR
+    FROM
+      issue_date
+  ) as issue_year,
+  EXTRACT(
+    MONTH
+    FROM
+      issue_date
+  ) as issue_month,
   purpose,
   zip_code,
   addr_state,
