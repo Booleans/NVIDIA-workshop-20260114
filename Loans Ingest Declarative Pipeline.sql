@@ -1,5 +1,5 @@
 CREATE OR REFRESH STREAMING TABLE training.loans.loans_bronze_DLT
---(CONSTRAINT valid_loan_grade EXPECT(grade IN ('A', 'B', 'C')) ON VIOLATION DROP ROW)
+--(CONSTRAINT valid_state EXPECT(addr_state IN ('CA', 'OR', 'WA')) ON VIOLATION DROP ROW)
 AS SELECT
   *
 FROM
@@ -52,7 +52,7 @@ SELECT
   mths_since_recent_bc,
   bc_util
 FROM STREAM
-  loans_bronze_DLT;
+  training.loans.loans_bronze_DLT;
 
 CREATE OR REFRESH STREAMING TABLE training.loans.loans_gold_DLT
 AS
@@ -70,4 +70,4 @@ SELECT
   addr_state,
   dti
 FROM STREAM
-  loans_silver_DLT;
+  training.loans.loans_silver_DLT;
