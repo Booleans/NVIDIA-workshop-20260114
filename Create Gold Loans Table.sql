@@ -1,6 +1,5 @@
 CREATE TABLE IF NOT EXISTS training.loans.issued_loans_gold
 SELECT
-SELECT
   loan_id,
   loan_amnt,
   term,
@@ -17,5 +16,5 @@ FROM
   training.loans.issued_loans_silver;
 
 SELECT *
-FROM training.anicholls.issued_loans_silver
+FROM training.loans.issued_loans_silver
 LIMIT 100;
