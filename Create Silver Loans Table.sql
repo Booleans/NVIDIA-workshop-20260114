@@ -1,4 +1,5 @@
-CREATE TABLE IF NOT EXISTS training.loans.issued_loans_silver
+CREATE OR REPLACE TABLE training.loans.issued_loans_silver
+CLUSTER BY AUTO AS
 SELECT
   id AS loan_id,
   loan_amnt,
@@ -9,7 +10,7 @@ SELECT
   sub_grade,
   CASE
     WHEN substr(emp_length, 1, 1) = '<' THEN 0 -- <1 year should count as 0
-    ELSE regexp_extract(emp_length, '(\\d+)+')
+    ELSE try_cast(regexp_extract(emp_length, '(\\d+)+') AS INT)
   END AS emp_length,
   home_ownership,
   annual_inc,
@@ -49,4 +50,3 @@ FROM
 
 SELECT *
 FROM training.loans.issued_loans_silver
-LIMIT 100
