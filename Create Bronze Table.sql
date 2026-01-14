@@ -1,5 +1,10 @@
-CREATE OR REPLACE TABLE main.loans.issued_loans_bronze
+CREATE OR REPLACE TABLE training.loans.issued_loans_bronze AS
 SELECT
   *
 FROM
-  main.anicholls.issued_loans;
+  read_files('/Volumes/training/loans/loan_files/LoanStats*.parquet', header => true);
+
+SELECT
+ *
+FROM
+  training.loans.issued_loans_bronze

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS main.loans.issued_loans_gold
+CREATE TABLE IF NOT EXISTS training.loans.issued_loans_gold
 SELECT
 SELECT
   loan_id,
@@ -14,8 +14,8 @@ SELECT
   addr_state,
   dti
 FROM
-  main.loans.issued_loans_silver;
+  training.loans.issued_loans_silver;
 
 SELECT *
-FROM main.anicholls.issued_loans_silver
-LIMIT 10;
+FROM training.anicholls.issued_loans_silver
+LIMIT 100;
